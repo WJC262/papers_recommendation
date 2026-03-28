@@ -1,0 +1,132 @@
+/* src/index.css */
+
+/* ===== 全局样式 ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: #fff;
+  font-family: "Inter", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 布局容器 ===== */
+/* 默认：首屏无结果时垂直居中 */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding-top: 0;
+}
+
+/* 有结果时：从顶部开始排布，并留一点顶部空隙 */
+.app-shell.has-result {
+  justify-content: flex-start;
+  padding-top: 6vh;
+}
+
+/* ===== 搜索框 & 按钮 样式 ===== */
+/* ① 搜索框整体：80px 高度，底部对齐，两端分散 */
+.input-box {
+  position: relative;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;          /* 子元素底部对齐 */
+  justify-content: space-between; /* 两端按钮各据一侧 */
+  width: min(800px, 90vw);
+  padding: 0 12px;                 /* 左右内边距 */
+  padding-bottom: 8px;             /* 底部留出空间 */
+  border: 1px solid #e6e6e6;
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s;
+}
+
+.input-box:focus-within {
+  border-color: #4096ff;
+}
+
+/* ② AntD Input 外壳 & 输入框本身 同步 100% 高 */
+.input-box .ant-input-affix-wrapper {
+  order: 2;               /* 放在中间 */
+  flex: 1 1 auto;
+  margin: 0 8px;          /* 与左右按钮各留 8px */
+  height: 100%;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.input-box .ant-input {
+  height: 100%;
+  line-height: normal;
+  border: none;
+  padding: 24px 4px 0 8px;  /* 上 24px，下 0 */
+  box-sizing: border-box;
+}
+
+/* ③ 下拉和箭头统一 34px 高，并与底边保持距离 */
+.selector-btn,
+.square-btn {
+  height: 34px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -2px;    /* 距离底边 6px */
+}
+
+/* ④ MiniMax 样式的期刊下拉（左下） */
+.selector-btn {
+  order: 1;              /* 放最前 */
+  padding: 0 10px;
+  margin-left: 0;        /* 紧贴左侧 */
+  margin-right: 8px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #666;
+  background: #fafafa;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.selector-btn:hover {
+  border-color: #4096ff;
+  color: #4096ff;
+}
+
+/* ⑤ 正方形蓝色箭头（右下） */
+.square-btn {
+  order: 3;              /* 放最后 */
+  width: 34px;
+  margin-left: 0;        /* 不要左侧多余间距 */
+  border-radius: 8px;
+  background: #4096ff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.square-btn:hover {
+  background: #2978ff;
+}
+
+.square-btn:active {
+  background: #1a5ad9;
+}
+
+.square-btn i {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.journal-dropdown {
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  min-width: 220px;
+}
+
